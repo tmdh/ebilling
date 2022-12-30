@@ -1,4 +1,5 @@
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -18,6 +19,7 @@ public class PackageChooserWindow extends javax.swing.JFrame {
 
     Vector<Package> list;
     User user;
+    static DatabaseClient client = new DatabaseClient();
     
     /**
      * Creates new form PackageChooserWindow
@@ -55,6 +57,7 @@ public class PackageChooserWindow extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Please choose a package from the list");
 
         jLabel1.setFont(new java.awt.Font("Noto Sans", 0, 22)); // NOI18N
         jLabel1.setText("jLabel1");
@@ -123,10 +126,17 @@ public class PackageChooserWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jList1ValueChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Insert into subscriptions table
-        
-        
-        
+        try {
+            // Insert into subscriptions table
+            PreparedStatement st = client.connection.prepareStatement("insert into subscription (cust_id, pkg_id, billing_day, status) values (?, ?, ?, false)");
+            st.setInt(1, this.user.id);
+            System.out.println(jList1.getSelectedIndex());
+            st.setInt(2, jList1.getSelectedIndex()+1);
+            //st.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(PackageChooserWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
         // Open dashboard with user
         this.setVisible(false);
         new DashboardWindow(this.user).setVisible(true);
