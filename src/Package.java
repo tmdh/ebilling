@@ -1,6 +1,7 @@
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 
 /*
@@ -18,8 +19,6 @@ public class Package {
     String description;
     int price;
     int bandwidth;
-    
-    static DatabaseClient client = new DatabaseClient();
 
     public Package(int id, String name, String description, int price, int bandwidth) {
         this.id = id;
@@ -29,8 +28,9 @@ public class Package {
         this.bandwidth = bandwidth;
     }
     
-    public static Vector<Package> all() throws SQLException {
-        ResultSet rs = client.statement.executeQuery("select * from package");
+    public static Vector<Package> all(DatabaseClient client) throws SQLException {
+        Statement st = client.connection.createStatement();
+        ResultSet rs = st.executeQuery("select * from package");
         Vector<Package> v = new Vector<>();
         while (rs.next()) {
             v.add(new Package(rs.getInt("id"), rs.getString("name"), rs.getString("description"), rs.getInt("price"), rs.getInt("bandwidth")));

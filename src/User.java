@@ -1,6 +1,7 @@
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.logging.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,9 +18,9 @@ public class User {
     String email;
     int id;
     
-    static DatabaseClient client = new DatabaseClient();
+    private Logger logger = Logger.getLogger("User");
     
-    public User(int id) {
+    public User(DatabaseClient client, int id) {
         this.id = id;
         try {
             PreparedStatement st = client.connection.prepareStatement("select name, email from user where id=?");
@@ -27,10 +28,12 @@ public class User {
             ResultSet rs = st.executeQuery();
             this.name = rs.getString("name");
             this.email = rs.getString("email");
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
     }
     
-    public static User create(String email, String password, String confirmPassword, String name) throws Exception {
+    public static User create(DatabaseClient client, String email, String password, String confirmPassword, String name) throws Exception {
         if (!password.equals(confirmPassword)) {
             throw new Exception("Password fields do not match.");
         }
@@ -43,7 +46,7 @@ public class User {
         st.execute();
         PreparedStatement st2 = client.connection.prepareStatement("select id from user where email = ?");
         st2.setString(1, email);
-        ResultSet rs = st2.executeQuery();        
-        return new User(rs.getInt("id"));
+        ResultSet rs = st2.executeQuery();       
+        return new User(client, rs.getInt("id"));
     }
 }

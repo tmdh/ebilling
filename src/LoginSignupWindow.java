@@ -252,16 +252,16 @@ public class LoginSignupWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        User user = new User(1);
+        User user = new User(client, 1);
         this.setVisible(false);
         new DashboardWindow(user).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
-            User user = User.create(emailTextField1.getText(), passwordField1.getText(), confirmPasswordField1.getText(), nameField1.getText());
+            User user = User.create(client, emailTextField1.getText(), passwordField1.getText(), confirmPasswordField1.getText(), nameField1.getText());
             this.setVisible(false);
-            new PackageChooserWindow(user).setVisible(true);
+            new PackageChooserWindow(client, user).setVisible(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "PackageChooserWindow", JOptionPane.ERROR_MESSAGE);
         }
