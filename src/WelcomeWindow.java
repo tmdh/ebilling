@@ -28,12 +28,12 @@ public class WelcomeWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        borderPanel1 = new BorderPanel();
-        borderPanel2 = new BorderPanel();
+        borderPanel1 = new BgPanel();
+        borderPanel2 = new BgPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        borderPanel3 = new BorderPanel();
+        borderPanel3 = new BgPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -256,9 +256,9 @@ public class WelcomeWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private BorderPanel borderPanel1;
-    private BorderPanel borderPanel2;
-    private BorderPanel borderPanel3;
+    private BgPanel borderPanel1;
+    private BgPanel borderPanel2;
+    private BgPanel borderPanel3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

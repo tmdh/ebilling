@@ -12,12 +12,12 @@ import java.awt.RenderingHints;
  *
  * @author tareque
  */
-public class BorderPanel extends javax.swing.JPanel {
+public class BgPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form BorderPanel
      */
-    public BorderPanel() {
+    public BgPanel() {
         initComponents();
         setOpaque(false);
     }

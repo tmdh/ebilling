@@ -31,8 +31,8 @@ public class LoginWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        borderPanel2 = new BorderPanel();
-        borderPanel1 = new BorderPanel();
+        borderPanel2 = new BgPanel();
+        borderPanel1 = new BgPanel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -215,8 +215,8 @@ public class LoginWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_emailTextFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private BorderPanel borderPanel1;
-    private BorderPanel borderPanel2;
+    private BgPanel borderPanel1;
+    private BgPanel borderPanel2;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
