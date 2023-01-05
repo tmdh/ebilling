@@ -39,7 +39,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="BorderPanel" name="borderPanel2">
+    <Container class="BgPanel" name="borderPanel2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="37" red="3c" type="rgb"/>
@@ -70,7 +70,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="BorderPanel" name="borderPanel1">
+        <Container class="BgPanel" name="borderPanel1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

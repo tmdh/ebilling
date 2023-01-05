@@ -15,7 +15,7 @@ import java.awt.RenderingHints;
 public class BgPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form BorderPanel
+     * Creates new panel BgPanel
      */
     public BgPanel() {
         initComponents();
