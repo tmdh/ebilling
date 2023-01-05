@@ -49,4 +49,17 @@ public class User {
         ResultSet rs = st2.executeQuery();       
         return new User(client, rs.getInt("id"));
     }
+    
+    public static User find(DatabaseClient client, String email, String password) throws Exception {
+        // Find User in the database
+        PreparedStatement st = client.connection.prepareStatement("select id from user where email=? and password=?");
+        st.setString(1, email);
+        st.setString(2, password);
+        ResultSet rs = st.executeQuery();
+        if (rs.next()) {
+            return new User(client, rs.getInt("id"));
+        } else {
+            throw new Exception("Email and password do not match");
+        }
+    }
 }

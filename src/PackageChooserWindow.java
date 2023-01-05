@@ -158,8 +158,8 @@ public class PackageChooserWindow extends javax.swing.JFrame {
         }
 
         // Open dashboard with user
-        this.setVisible(false);
-        new DashboardWindow(this.user).setVisible(true);
+        new DashboardWindowOld(client, this.user).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
