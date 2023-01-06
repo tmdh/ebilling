@@ -62,6 +62,12 @@ public class DashboardWindow extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         bgPanel5 = new BgPanel();
+        jLabel9 = new javax.swing.JLabel();
+        bgPanel6 = new BgPanel();
+        jLabel10 = new javax.swing.JLabel();
+        bgPanel7 = new BgPanel();
+        jLabel11 = new javax.swing.JLabel();
+        bgPanel8 = new BgPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +85,11 @@ public class DashboardWindow extends javax.swing.JFrame {
         jButton1.setText("Dashboard");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton1.setIconTextGap(10);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(243, 245, 247));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -309,22 +320,91 @@ public class DashboardWindow extends javax.swing.JFrame {
                 .addContainerGap(392, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab1", bgPanel4);
+        jTabbedPane1.addTab("Dashboard", bgPanel4);
 
         bgPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel9.setText("jLabel9");
 
         javax.swing.GroupLayout bgPanel5Layout = new javax.swing.GroupLayout(bgPanel5);
         bgPanel5.setLayout(bgPanel5Layout);
         bgPanel5Layout.setHorizontalGroup(
             bgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 636, Short.MAX_VALUE)
+            .addGroup(bgPanel5Layout.createSequentialGroup()
+                .addGap(151, 151, 151)
+                .addComponent(jLabel9)
+                .addContainerGap(445, Short.MAX_VALUE))
         );
         bgPanel5Layout.setVerticalGroup(
             bgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgPanel5Layout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addComponent(jLabel9)
+                .addContainerGap(430, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Subscriptions", bgPanel5);
+
+        bgPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel10.setText("jLabel10");
+
+        javax.swing.GroupLayout bgPanel6Layout = new javax.swing.GroupLayout(bgPanel6);
+        bgPanel6.setLayout(bgPanel6Layout);
+        bgPanel6Layout.setHorizontalGroup(
+            bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgPanel6Layout.createSequentialGroup()
+                .addGap(241, 241, 241)
+                .addComponent(jLabel10)
+                .addContainerGap(348, Short.MAX_VALUE))
+        );
+        bgPanel6Layout.setVerticalGroup(
+            bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgPanel6Layout.createSequentialGroup()
+                .addGap(255, 255, 255)
+                .addComponent(jLabel10)
+                .addContainerGap(357, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Payment", bgPanel6);
+
+        bgPanel7.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel11.setText("jLabel11");
+
+        javax.swing.GroupLayout bgPanel7Layout = new javax.swing.GroupLayout(bgPanel7);
+        bgPanel7.setLayout(bgPanel7Layout);
+        bgPanel7Layout.setHorizontalGroup(
+            bgPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgPanel7Layout.createSequentialGroup()
+                .addGap(288, 288, 288)
+                .addComponent(jLabel11)
+                .addContainerGap(301, Short.MAX_VALUE))
+        );
+        bgPanel7Layout.setVerticalGroup(
+            bgPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgPanel7Layout.createSequentialGroup()
+                .addContainerGap(374, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(238, 238, 238))
+        );
+
+        jTabbedPane1.addTab("Complaints", bgPanel7);
+
+        bgPanel8.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout bgPanel8Layout = new javax.swing.GroupLayout(bgPanel8);
+        bgPanel8.setLayout(bgPanel8Layout);
+        bgPanel8Layout.setHorizontalGroup(
+            bgPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 636, Short.MAX_VALUE)
+        );
+        bgPanel8Layout.setVerticalGroup(
+            bgPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 629, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab2", bgPanel5);
+        jTabbedPane1.addTab("Account", bgPanel8);
 
         javax.swing.GroupLayout bgPanel1Layout = new javax.swing.GroupLayout(bgPanel1);
         bgPanel1.setLayout(bgPanel1Layout);
@@ -333,7 +413,7 @@ public class DashboardWindow extends javax.swing.JFrame {
             .addGroup(bgPanel1Layout.createSequentialGroup()
                 .addComponent(sidePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1))
         );
         bgPanel1Layout.setVerticalGroup(
             bgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,19 +438,19 @@ public class DashboardWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(3);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(4);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -401,12 +481,19 @@ public class DashboardWindow extends javax.swing.JFrame {
 
     }//GEN-LAST:event_bgPanel2MouseMoved
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jTabbedPane1.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private BgPanel bgPanel1;
     private BgPanel bgPanel2;
     private BgPanel bgPanel3;
     private BgPanel bgPanel4;
     private BgPanel bgPanel5;
+    private BgPanel bgPanel6;
+    private BgPanel bgPanel7;
+    private BgPanel bgPanel8;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -414,6 +501,8 @@ public class DashboardWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -421,6 +510,7 @@ public class DashboardWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private SidePanel sidePanel1;
     // End of variables declaration//GEN-END:variables
