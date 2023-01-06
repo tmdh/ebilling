@@ -1,3 +1,5 @@
+package model;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -12,7 +14,7 @@ import java.sql.*;
 import java.util.logging.*;
 
 public class DatabaseClient {
-    Connection connection = null;
+    public Connection connection = null;
     
     private Logger logger = Logger.getLogger("DatabaseClient");
     

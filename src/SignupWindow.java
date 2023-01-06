@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import model.User;
+import model.DatabaseClient;
 import java.util.logging.*;
 
 /**

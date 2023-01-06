@@ -1,4 +1,6 @@
 
+import model.User;
+import model.DatabaseClient;
 import java.awt.Color;
 import java.awt.Cursor;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;

@@ -1,4 +1,6 @@
 
+import model.User;
+import model.DatabaseClient;
 import javax.swing.JOptionPane;
 
 /*
