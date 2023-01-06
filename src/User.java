@@ -1,6 +1,4 @@
-package model;
 
-import model.DatabaseClient;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.logging.*;
@@ -16,9 +14,9 @@ import java.util.logging.*;
  */
 public class User {
     
-    public String name;
-    public String email;
-    public int id;
+    String name;
+    String email;
+    int id;
     
     private Logger logger = Logger.getLogger("User");
     

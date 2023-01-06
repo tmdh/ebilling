@@ -1,7 +1,4 @@
-package model;
 
-
-import model.DatabaseClient;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,11 +14,11 @@ import java.util.Vector;
  * @author tareque
  */
 public class Package {
-    public int id;
-    public String name;
-    public String description;
-    public int price;
-    public int bandwidth;
+    int id;
+    String name;
+    String description;
+    int price;
+    int bandwidth;
 
     public Package(int id, String name, String description, int price, int bandwidth) {
         this.id = id;
