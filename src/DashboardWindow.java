@@ -49,7 +49,7 @@ public class DashboardWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bgPanel1 = new BgPanel();
+        rectBgPanel1 = new RectBgPanel();
         sidePanel1 = new SidePanel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -78,8 +78,6 @@ public class DashboardWindow extends javax.swing.JFrame {
         bgPanel8 = new BgPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        bgPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         sidePanel1.setBackground(new java.awt.Color(243, 245, 247));
 
@@ -320,7 +318,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(bgPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         bgPanel4Layout.setVerticalGroup(
             bgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,7 +329,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                 .addGroup(bgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bgPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                     .addComponent(bgPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(392, Short.MAX_VALUE))
+                .addContainerGap(463, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dashboard", bgPanel4);
@@ -347,14 +345,14 @@ public class DashboardWindow extends javax.swing.JFrame {
             .addGroup(bgPanel5Layout.createSequentialGroup()
                 .addGap(151, 151, 151)
                 .addComponent(jLabel9)
-                .addContainerGap(445, Short.MAX_VALUE))
+                .addContainerGap(490, Short.MAX_VALUE))
         );
         bgPanel5Layout.setVerticalGroup(
             bgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgPanel5Layout.createSequentialGroup()
                 .addGap(182, 182, 182)
                 .addComponent(jLabel9)
-                .addContainerGap(430, Short.MAX_VALUE))
+                .addContainerGap(501, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Subscriptions", bgPanel5);
@@ -370,14 +368,14 @@ public class DashboardWindow extends javax.swing.JFrame {
             .addGroup(bgPanel6Layout.createSequentialGroup()
                 .addGap(241, 241, 241)
                 .addComponent(jLabel10)
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addContainerGap(393, Short.MAX_VALUE))
         );
         bgPanel6Layout.setVerticalGroup(
             bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgPanel6Layout.createSequentialGroup()
                 .addGap(255, 255, 255)
                 .addComponent(jLabel10)
-                .addContainerGap(357, Short.MAX_VALUE))
+                .addContainerGap(428, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Payment", bgPanel6);
@@ -393,12 +391,12 @@ public class DashboardWindow extends javax.swing.JFrame {
             .addGroup(bgPanel7Layout.createSequentialGroup()
                 .addGap(288, 288, 288)
                 .addComponent(jLabel11)
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addContainerGap(346, Short.MAX_VALUE))
         );
         bgPanel7Layout.setVerticalGroup(
             bgPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgPanel7Layout.createSequentialGroup()
-                .addContainerGap(374, Short.MAX_VALUE)
+                .addContainerGap(445, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addGap(238, 238, 238))
         );
@@ -411,41 +409,40 @@ public class DashboardWindow extends javax.swing.JFrame {
         bgPanel8.setLayout(bgPanel8Layout);
         bgPanel8Layout.setHorizontalGroup(
             bgPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 636, Short.MAX_VALUE)
+            .addGap(0, 681, Short.MAX_VALUE)
         );
         bgPanel8Layout.setVerticalGroup(
             bgPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 629, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Account", bgPanel8);
 
-        javax.swing.GroupLayout bgPanel1Layout = new javax.swing.GroupLayout(bgPanel1);
-        bgPanel1.setLayout(bgPanel1Layout);
-        bgPanel1Layout.setHorizontalGroup(
-            bgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout rectBgPanel1Layout = new javax.swing.GroupLayout(rectBgPanel1);
+        rectBgPanel1.setLayout(rectBgPanel1Layout);
+        rectBgPanel1Layout.setHorizontalGroup(
+            rectBgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rectBgPanel1Layout.createSequentialGroup()
                 .addComponent(sidePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
-        bgPanel1Layout.setVerticalGroup(
-            bgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        rectBgPanel1Layout.setVerticalGroup(
+            rectBgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sidePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(bgPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1))
+            .addComponent(jTabbedPane1)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rectBgPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rectBgPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -546,7 +543,6 @@ public class DashboardWindow extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private BgPanel bgPanel1;
     private BgPanel bgPanel2;
     private BgPanel bgPanel3;
     private BgPanel bgPanel4;
@@ -572,6 +568,7 @@ public class DashboardWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private RectBgPanel rectBgPanel1;
     private SidePanel sidePanel1;
     // End of variables declaration//GEN-END:variables
 }

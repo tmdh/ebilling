@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -20,6 +21,7 @@ public class RectBgPanel extends javax.swing.JPanel {
     public RectBgPanel() {
         initComponents();
         setOpaque(false);
+        setBackground(Color.WHITE);
     }
 
     /**

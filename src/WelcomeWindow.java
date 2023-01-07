@@ -28,7 +28,7 @@ public class WelcomeWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        borderPanel1 = new BgPanel();
+        rectBgPanel2 = new RectBgPanel();
         borderPanel2 = new BgPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -44,8 +44,6 @@ public class WelcomeWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-
-        borderPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         borderPanel2.setBackground(new java.awt.Color(60, 55, 255));
 
@@ -131,7 +129,7 @@ public class WelcomeWindow extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(101, 101, 101)
                 .addComponent(borderPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         jButton1.setBackground(new java.awt.Color(60, 55, 253));
@@ -156,32 +154,32 @@ public class WelcomeWindow extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout borderPanel1Layout = new javax.swing.GroupLayout(borderPanel1);
-        borderPanel1.setLayout(borderPanel1Layout);
-        borderPanel1Layout.setHorizontalGroup(
-            borderPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(borderPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout rectBgPanel2Layout = new javax.swing.GroupLayout(rectBgPanel2);
+        rectBgPanel2.setLayout(rectBgPanel2Layout);
+        rectBgPanel2Layout.setHorizontalGroup(
+            rectBgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rectBgPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(borderPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(borderPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, borderPanel1Layout.createSequentialGroup()
+                .addGroup(rectBgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rectBgPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel7)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(borderPanel1Layout.createSequentialGroup()
+                    .addGroup(rectBgPanel2Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
-                        .addGroup(borderPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(rectBgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(100, 100, 100))))
         );
-        borderPanel1Layout.setVerticalGroup(
-            borderPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(borderPanel1Layout.createSequentialGroup()
+        rectBgPanel2Layout.setVerticalGroup(
+            rectBgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rectBgPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(borderPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(borderPanel1Layout.createSequentialGroup()
+            .addGroup(rectBgPanel2Layout.createSequentialGroup()
                 .addGap(227, 227, 227)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
@@ -195,11 +193,13 @@ public class WelcomeWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(borderPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rectBgPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(borderPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(rectBgPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -256,7 +256,6 @@ public class WelcomeWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private BgPanel borderPanel1;
     private BgPanel borderPanel2;
     private BgPanel borderPanel3;
     private javax.swing.JButton jButton1;
@@ -269,5 +268,6 @@ public class WelcomeWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private RectBgPanel rectBgPanel2;
     // End of variables declaration//GEN-END:variables
 }
