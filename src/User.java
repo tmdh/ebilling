@@ -62,4 +62,11 @@ public class User {
             throw new Exception("Email and password do not match");
         }
     }
+    
+    public int countSubscriptions(DatabaseClient client) throws Exception {
+        PreparedStatement st = client.connection.prepareStatement("select count(id) from subscription where cust_id=?");
+        st.setInt(1, id);
+        ResultSet rs = st.executeQuery();
+        return rs.getInt(1);
+    }
 }

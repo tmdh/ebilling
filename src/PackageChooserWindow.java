@@ -1,10 +1,8 @@
-
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -64,9 +62,10 @@ public class PackageChooserWindow extends javax.swing.JFrame {
 
         borderPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Noto Sans", 0, 22)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabel1.setText("Welcome label");
 
+        jList1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 jList1ValueChanged(evt);
@@ -75,10 +74,11 @@ public class PackageChooserWindow extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         jTextPane1.setEditable(false);
+        jTextPane1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jScrollPane2.setViewportView(jTextPane1);
 
         jButton1.setBackground(new java.awt.Color(60, 55, 253));
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Select");
         jButton1.setEnabled(false);
@@ -115,7 +115,7 @@ public class PackageChooserWindow extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(51, 51, 51)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,7 +138,7 @@ public class PackageChooserWindow extends javax.swing.JFrame {
             if (index != -1) {
                 jButton1.setEnabled(true);
                 Package pkg = list.elementAt(index);
-                jTextPane1.setText(pkg.description + "\n\nBandwidth: " + pkg.bandwidth + "mpbs");
+                jTextPane1.setText(pkg.description + "\n\nBandwidth: " + pkg.bandwidth + "mpbs\nPrice: " + pkg.price);
             } else {
                 jButton1.setEnabled(false);
             }
@@ -147,21 +147,53 @@ public class PackageChooserWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            // Insert into subscriptions table
-            PreparedStatement st = client.connection.prepareStatement("insert into subscription (cust_id, pkg_id, billing_day, status) values (?, ?, ?, false)");
-            st.setInt(1, this.user.id);
-            System.out.println(jList1.getSelectedIndex());
-            st.setInt(2, jList1.getSelectedIndex()+1);
-            //st.execute();
-        } catch (SQLException ex) {
+            Subscription.insert(client, user, jList1.getSelectedIndex()+1);
+            new DashboardWindow(client, this.user).setVisible(true);
+            this.dispose();
+        } catch (Exception ex) {
             Logger.getLogger(PackageChooserWindow.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error adding subscription", JOptionPane.ERROR_MESSAGE);
         }
-
-        // Open dashboard with user
-        new DashboardWindowOld(client, this.user).setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    public static void main(String[] args) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(WelcomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(WelcomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(WelcomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(WelcomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        DatabaseClient client = new DatabaseClient();
+        
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new PackageChooserWindow(client, User.find(client, "a", "a")).setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(PackageChooserWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private BgPanel borderPanel1;

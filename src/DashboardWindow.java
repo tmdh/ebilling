@@ -1,6 +1,8 @@
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 
 /*
@@ -30,6 +32,12 @@ public class DashboardWindow extends javax.swing.JFrame {
                 return 0; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
             }
         });
+        jLabel1.setText("Hello, " + user.name + "!");
+        try {
+            jLabel2.setText(String.valueOf(user.countSubscriptions(client)));
+        } catch (Exception ex) {
+            Logger.getLogger(DashboardWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -201,6 +209,9 @@ public class DashboardWindow extends javax.swing.JFrame {
             }
         });
         bgPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bgPanel2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 bgPanel2MouseEntered(evt);
             }
@@ -210,7 +221,7 @@ public class DashboardWindow extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        jLabel2.setText("3");
+        jLabel2.setText("500");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -249,6 +260,9 @@ public class DashboardWindow extends javax.swing.JFrame {
         bgPanel3.setBackground(new java.awt.Color(243, 245, 247));
         bgPanel3.setPreferredSize(new java.awt.Dimension(270, 100));
         bgPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bgPanel3MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 bgPanel3MouseEntered(evt);
             }
@@ -485,6 +499,52 @@ public class DashboardWindow extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void bgPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel2MouseClicked
+        jTabbedPane1.setSelectedIndex(1);
+    }//GEN-LAST:event_bgPanel2MouseClicked
+
+    private void bgPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel3MouseClicked
+        jTabbedPane1.setSelectedIndex(2);
+    }//GEN-LAST:event_bgPanel3MouseClicked
+
+    public static void main(String[] args) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(WelcomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(WelcomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(WelcomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(WelcomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        DatabaseClient client = new DatabaseClient();
+        
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new DashboardWindow(client, User.find(client, "a", "a")).setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(DashboardWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private BgPanel bgPanel1;
     private BgPanel bgPanel2;
