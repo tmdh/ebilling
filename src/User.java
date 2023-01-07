@@ -69,4 +69,11 @@ public class User {
         ResultSet rs = st.executeQuery();
         return rs.getInt(1);
     }
+    
+    public int totalBillPerMonth(DatabaseClient client) throws Exception {
+        PreparedStatement st = client.connection.prepareStatement("select sum(package.price) from subscription inner join package on package.id=subscription.pkg_id and subscription.cust_id=?");
+        st.setInt(1, id);
+        ResultSet rs = st.executeQuery();
+        return rs.getInt(1);
+    }
 }

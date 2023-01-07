@@ -29,12 +29,13 @@ public class DashboardWindow extends javax.swing.JFrame {
         jTabbedPane1.setUI(new BasicTabbedPaneUI() {
             @Override
             protected int calculateTabAreaHeight(int tabPlacement, int horizRunCount, int maxTabHeight) {
-                return 0; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+                return 0;
             }
         });
         jLabel1.setText("Hello, " + user.name + "!");
         try {
             jLabel2.setText(String.valueOf(user.countSubscriptions(client)));
+            jLabel4.setText(String.valueOf(user.totalBillPerMonth(client)));
         } catch (Exception ex) {
             Logger.getLogger(DashboardWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -70,12 +71,13 @@ public class DashboardWindow extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         bgPanel5 = new BgPanel();
-        jLabel9 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         bgPanel6 = new BgPanel();
         jLabel10 = new javax.swing.JLabel();
         bgPanel7 = new BgPanel();
         jLabel11 = new javax.swing.JLabel();
         bgPanel8 = new BgPanel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -336,84 +338,96 @@ public class DashboardWindow extends javax.swing.JFrame {
 
         bgPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel9.setText("jLabel9");
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel12.setText("Subscriptions");
 
         javax.swing.GroupLayout bgPanel5Layout = new javax.swing.GroupLayout(bgPanel5);
         bgPanel5.setLayout(bgPanel5Layout);
         bgPanel5Layout.setHorizontalGroup(
             bgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgPanel5Layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(jLabel9)
-                .addContainerGap(490, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(jLabel12)
+                .addContainerGap(569, Short.MAX_VALUE))
         );
         bgPanel5Layout.setVerticalGroup(
             bgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgPanel5Layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addComponent(jLabel9)
-                .addContainerGap(501, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel12)
+                .addContainerGap(652, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Subscriptions", bgPanel5);
 
         bgPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel10.setText("jLabel10");
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel10.setText("Payment");
 
         javax.swing.GroupLayout bgPanel6Layout = new javax.swing.GroupLayout(bgPanel6);
         bgPanel6.setLayout(bgPanel6Layout);
         bgPanel6Layout.setHorizontalGroup(
             bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgPanel6Layout.createSequentialGroup()
-                .addGap(241, 241, 241)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel10)
-                .addContainerGap(393, Short.MAX_VALUE))
+                .addContainerGap(603, Short.MAX_VALUE))
         );
         bgPanel6Layout.setVerticalGroup(
             bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgPanel6Layout.createSequentialGroup()
-                .addGap(255, 255, 255)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel10)
-                .addContainerGap(428, Short.MAX_VALUE))
+                .addContainerGap(652, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Payment", bgPanel6);
 
         bgPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel11.setText("jLabel11");
+        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel11.setText("Complaints");
 
         javax.swing.GroupLayout bgPanel7Layout = new javax.swing.GroupLayout(bgPanel7);
         bgPanel7.setLayout(bgPanel7Layout);
         bgPanel7Layout.setHorizontalGroup(
             bgPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgPanel7Layout.createSequentialGroup()
-                .addGap(288, 288, 288)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel11)
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addContainerGap(585, Short.MAX_VALUE))
         );
         bgPanel7Layout.setVerticalGroup(
             bgPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgPanel7Layout.createSequentialGroup()
-                .addContainerGap(445, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel11)
-                .addGap(238, 238, 238))
+                .addContainerGap(652, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Complaints", bgPanel7);
 
         bgPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel13.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel13.setText("Account");
+
         javax.swing.GroupLayout bgPanel8Layout = new javax.swing.GroupLayout(bgPanel8);
         bgPanel8.setLayout(bgPanel8Layout);
         bgPanel8Layout.setHorizontalGroup(
             bgPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 681, Short.MAX_VALUE)
+            .addGroup(bgPanel8Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel13)
+                .addContainerGap(607, Short.MAX_VALUE))
         );
         bgPanel8Layout.setVerticalGroup(
             bgPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgPanel8Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel13)
+                .addContainerGap(652, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Account", bgPanel8);
@@ -425,13 +439,13 @@ public class DashboardWindow extends javax.swing.JFrame {
             .addGroup(rectBgPanel1Layout.createSequentialGroup()
                 .addComponent(sidePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
                 .addContainerGap())
         );
         rectBgPanel1Layout.setVerticalGroup(
             rectBgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sidePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -559,6 +573,8 @@ public class DashboardWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -566,7 +582,6 @@ public class DashboardWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private RectBgPanel rectBgPanel1;
     private SidePanel sidePanel1;
