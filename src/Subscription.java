@@ -15,13 +15,19 @@ import java.util.logging.Logger;
  */
 public class Subscription {
     int id;
-    int pkg_id;
-    boolean active;
+    String name;
+    int price, billing_day, bandwidth;
+    boolean status;
     
     private Logger logger = Logger.getLogger("User");
     
-    public Subscription(DatabaseClient client, int id) {
-        
+    public Subscription(int id, String name, int price, int billing_day, int bandwidth, boolean status) {
+        this.id=id;
+        this.name=name;
+        this.price=price;
+        this.billing_day=billing_day;
+        this.bandwidth=bandwidth;
+        this.status=status;
     }
     
     public static void insert(DatabaseClient client, User user, int pkg_id) throws Exception {

@@ -1,6 +1,7 @@
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Vector;
 import java.util.logging.*;
 
 /*
@@ -75,5 +76,24 @@ public class User {
         st.setInt(1, id);
         ResultSet rs = st.executeQuery();
         return rs.getInt(1);
+    }
+    
+    public Vector<Vector<Object>> subscriptions(DatabaseClient client) throws Exception {
+        PreparedStatement st = client.connection.prepareStatement("select subscription.id, package.name, package.price, subscription.billing_day, package.bandwidth, subscription.status from subscription inner join package on package.id=subscription.pkg_id and subscription.cust_id=?");
+        st.setInt(1, id);
+        ResultSet rs = st.executeQuery();
+        Vector<Vector<Object>> v = new Vector<Vector<Object>>();
+        while (rs.next()) {
+            Vector<Object> a = new Vector<Object>();
+            for (int columnIndex = 1; columnIndex <= 6; columnIndex++) {
+                if (columnIndex == 6) {
+                    a.add(new Boolean(rs.getBoolean(6)));
+                } else {
+                    a.add(rs.getObject(columnIndex));
+                }
+            }
+            v.add(a);
+        }
+        return v;
     }
 }

@@ -1,9 +1,10 @@
-
 import java.awt.Color;
 import java.awt.Cursor;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -19,6 +20,7 @@ public class DashboardWindow extends javax.swing.JFrame {
     
     DatabaseClient client;
     User user;
+    Vector<Vector<Object>> subscriptions;
     /**
      * Creates new form DashboardWindow
      */
@@ -36,8 +38,36 @@ public class DashboardWindow extends javax.swing.JFrame {
         try {
             jLabel2.setText(String.valueOf(user.countSubscriptions(client)));
             jLabel4.setText(String.valueOf(user.totalBillPerMonth(client)));
+            subscriptions = user.subscriptions(client);
+            loadSubscriptions();
         } catch (Exception ex) {
             Logger.getLogger(DashboardWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    void loadSubscriptions() {
+        try {
+            Vector<String> columnNames = new Vector<>();
+            columnNames.add("ID");
+            columnNames.add("Package Name");
+            columnNames.add("Price");
+            columnNames.add("Billing day");
+            columnNames.add("Bandwidth");
+            columnNames.add("Status");
+            jTable1.setModel(new DefaultTableModel(subscriptions, columnNames) {
+                Object[] a = {1,"name",5,5,5,true};
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+
+                @Override
+                public Class<?> getColumnClass(int c) {
+                    return a[c].getClass();
+                }
+            });
+        } catch (Exception e) {
+            System.out.println("Error loading subscriptions: " + e.getMessage());
         }
     }
 
@@ -72,6 +102,8 @@ public class DashboardWindow extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         bgPanel5 = new BgPanel();
         jLabel12 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         bgPanel6 = new BgPanel();
         jLabel10 = new javax.swing.JLabel();
         bgPanel7 = new BgPanel();
@@ -320,7 +352,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(bgPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         bgPanel4Layout.setVerticalGroup(
             bgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,6 +373,35 @@ public class DashboardWindow extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel12.setText("Subscriptions");
 
+        jTable1.setBorder(null);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Package name", "Price", "Billing date", "Bandwidth", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout bgPanel5Layout = new javax.swing.GroupLayout(bgPanel5);
         bgPanel5.setLayout(bgPanel5Layout);
         bgPanel5Layout.setHorizontalGroup(
@@ -348,14 +409,17 @@ public class DashboardWindow extends javax.swing.JFrame {
             .addGroup(bgPanel5Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel12)
-                .addContainerGap(569, Short.MAX_VALUE))
+                .addContainerGap(575, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         bgPanel5Layout.setVerticalGroup(
             bgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgPanel5Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel12)
-                .addContainerGap(652, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Subscriptions", bgPanel5);
@@ -372,7 +436,7 @@ public class DashboardWindow extends javax.swing.JFrame {
             .addGroup(bgPanel6Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel10)
-                .addContainerGap(603, Short.MAX_VALUE))
+                .addContainerGap(609, Short.MAX_VALUE))
         );
         bgPanel6Layout.setVerticalGroup(
             bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,7 +460,7 @@ public class DashboardWindow extends javax.swing.JFrame {
             .addGroup(bgPanel7Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel11)
-                .addContainerGap(585, Short.MAX_VALUE))
+                .addContainerGap(591, Short.MAX_VALUE))
         );
         bgPanel7Layout.setVerticalGroup(
             bgPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,7 +484,7 @@ public class DashboardWindow extends javax.swing.JFrame {
             .addGroup(bgPanel8Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel13)
-                .addContainerGap(607, Short.MAX_VALUE))
+                .addContainerGap(613, Short.MAX_VALUE))
         );
         bgPanel8Layout.setVerticalGroup(
             bgPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -439,13 +503,12 @@ public class DashboardWindow extends javax.swing.JFrame {
             .addGroup(rectBgPanel1Layout.createSequentialGroup()
                 .addComponent(sidePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jTabbedPane1))
         );
         rectBgPanel1Layout.setVerticalGroup(
             rectBgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sidePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -582,7 +645,9 @@ public class DashboardWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private RectBgPanel rectBgPanel1;
     private SidePanel sidePanel1;
     // End of variables declaration//GEN-END:variables
