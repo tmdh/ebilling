@@ -21,20 +21,10 @@ public class Subscription {
     
     private Logger logger = Logger.getLogger("User");
     
-    public Subscription(int id, String name, int price, int billing_day, int bandwidth, boolean status) {
-        this.id=id;
-        this.name=name;
-        this.price=price;
-        this.billing_day=billing_day;
-        this.bandwidth=bandwidth;
-        this.status=status;
-    }
-    
     public static void insert(DatabaseClient client, User user, int pkg_id) throws Exception {
-        PreparedStatement st = client.connection.prepareStatement("insert into subscription (cust_id, pkg_id, billing_day, status) values (?, ?, ?, false)");
+        PreparedStatement st = client.connection.prepareStatement("insert into subscription (cust_id, pkg_id) values (?, ?)");
         st.setInt(1, user.id);
         st.setInt(2, pkg_id);
-        st.setInt(3, 5);
         st.execute();
     }
 }

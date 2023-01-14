@@ -3,6 +3,10 @@ import java.awt.Cursor;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,6 +25,10 @@ public class DashboardWindow extends javax.swing.JFrame {
     DatabaseClient client;
     User user;
     Vector<Vector<Object>> subscriptions;
+    Vector<Integer> selectedIndices = new Vector<>();
+    int amount = 0;
+    Logger logger = Logger.getLogger("DashboardWindow");
+    
     /**
      * Creates new form DashboardWindow
      */
@@ -36,25 +44,31 @@ public class DashboardWindow extends javax.swing.JFrame {
         });
         jLabel1.setText("Hello, " + user.name + "!");
         try {
-            jLabel2.setText(String.valueOf(user.countSubscriptions(client)));
-            jLabel4.setText(String.valueOf(user.totalBillPerMonth(client)));
-            subscriptions = user.subscriptions(client);
+            jLabel2.setText(String.valueOf(user.countSubscriptions()));
+            jLabel4.setText(String.valueOf(user.totalBillPerMonth()));
             loadSubscriptions();
         } catch (Exception ex) {
             Logger.getLogger(DashboardWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
+        buttonGroup2.add(jRadioButton1);
+        buttonGroup2.add(jRadioButton2);
+        buttonGroup2.add(jRadioButton3);
     }
     
-    void loadSubscriptions() {
+    private DefaultTableModel getModel() {
         try {
-            Vector<String> columnNames = new Vector<>();
-            columnNames.add("ID");
-            columnNames.add("Package Name");
-            columnNames.add("Price");
-            columnNames.add("Billing day");
-            columnNames.add("Bandwidth");
-            columnNames.add("Status");
-            jTable1.setModel(new DefaultTableModel(subscriptions, columnNames) {
+            subscriptions = user.subscriptions();
+        } catch (Exception ex) {
+            Logger.getLogger(DashboardWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Vector<String> columnNames = new Vector<>();
+        columnNames.add("ID");
+        columnNames.add("Package Name");
+        columnNames.add("Price");
+        columnNames.add("Billing day");
+        columnNames.add("Bandwidth");
+        columnNames.add("Status");
+        return new DefaultTableModel(subscriptions, columnNames) {
                 Object[] a = {1,"name",5,5,5,true};
                 @Override
                 public boolean isCellEditable(int row, int column) {
@@ -64,6 +78,19 @@ public class DashboardWindow extends javax.swing.JFrame {
                 @Override
                 public Class<?> getColumnClass(int c) {
                     return a[c].getClass();
+                }
+            };
+    }
+    
+    void loadSubscriptions() {
+        try {
+            DefaultTableModel model = getModel();
+            jTable1.setModel(model);
+            jTable2.setModel(model);
+            jTable2.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+                @Override
+                public void valueChanged(ListSelectionEvent lse) {
+                    jTable2ValueChanged(lse);
                 }
             });
         } catch (Exception e) {
@@ -80,6 +107,7 @@ public class DashboardWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup2 = new javax.swing.ButtonGroup();
         rectBgPanel1 = new RectBgPanel();
         sidePanel1 = new SidePanel();
         jLabel8 = new javax.swing.JLabel();
@@ -106,6 +134,18 @@ public class DashboardWindow extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         bgPanel6 = new BgPanel();
         jLabel10 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton7 = new javax.swing.JButton();
         bgPanel7 = new BgPanel();
         jLabel11 = new javax.swing.JLabel();
         bgPanel8 = new BgPanel();
@@ -363,7 +403,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                 .addGroup(bgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bgPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                     .addComponent(bgPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addContainerGap(559, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dashboard", bgPanel4);
@@ -374,6 +414,7 @@ public class DashboardWindow extends javax.swing.JFrame {
         jLabel12.setText("Subscriptions");
 
         jTable1.setBorder(null);
+        jTable1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -406,11 +447,11 @@ public class DashboardWindow extends javax.swing.JFrame {
         bgPanel5.setLayout(bgPanel5Layout);
         bgPanel5Layout.setHorizontalGroup(
             bgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
             .addGroup(bgPanel5Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel12)
-                .addContainerGap(575, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bgPanel5Layout.setVerticalGroup(
             bgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,8 +459,8 @@ public class DashboardWindow extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(496, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Subscriptions", bgPanel5);
@@ -429,21 +470,157 @@ public class DashboardWindow extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel10.setText("Payment");
 
+        jTable2.setBorder(null);
+        jTable2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Package name", "Price", "Billing date", "Bandwidth", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel9.setText("Click the subscriptions that you want to pay from the list above. Use Ctrl-Click to have multiple subscriptions selected.");
+
+        jLabel14.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel14.setText("Total amount:");
+
+        jLabel15.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel15.setText("0");
+
+        jLabel16.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel16.setText("Payment provider:");
+
+        jRadioButton1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jRadioButton1.setText("bKash");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jRadioButton2.setText("Rocket");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton3.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jRadioButton3.setText("Nagad");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel17.setText("Transaction ID:");
+
+        jTextField1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setBackground(new java.awt.Color(60, 55, 253));
+        jButton7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Pay");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout bgPanel6Layout = new javax.swing.GroupLayout(bgPanel6);
         bgPanel6.setLayout(bgPanel6Layout);
         bgPanel6Layout.setHorizontalGroup(
             bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
             .addGroup(bgPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel10)
-                .addContainerGap(609, Short.MAX_VALUE))
+                .addGroup(bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bgPanel6Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel10))
+                    .addGroup(bgPanel6Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel9))
+                    .addGroup(bgPanel6Layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addGroup(bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(bgPanel6Layout.createSequentialGroup()
+                                .addGroup(bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addGroup(bgPanel6Layout.createSequentialGroup()
+                                        .addComponent(jLabel16)
+                                        .addGap(53, 53, 53)
+                                        .addComponent(jRadioButton1)))
+                                .addGap(33, 33, 33)
+                                .addGroup(bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(bgPanel6Layout.createSequentialGroup()
+                                        .addComponent(jRadioButton2)
+                                        .addGap(44, 44, 44)
+                                        .addComponent(jRadioButton3))
+                                    .addComponent(jLabel15)))
+                            .addGroup(bgPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addGap(99, 99, 99)
+                                .addComponent(jTextField1))))
+                    .addGroup(bgPanel6Layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bgPanel6Layout.setVerticalGroup(
             bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgPanel6Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel10)
-                .addContainerGap(652, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel9)
+                .addGap(47, 47, 47)
+                .addGroup(bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15))
+                .addGap(29, 29, 29)
+                .addGroup(bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2)
+                    .addComponent(jRadioButton3))
+                .addGap(25, 25, 25)
+                .addGroup(bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Payment", bgPanel6);
@@ -467,7 +644,7 @@ public class DashboardWindow extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgPanel7Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel11)
-                .addContainerGap(652, Short.MAX_VALUE))
+                .addContainerGap(748, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Complaints", bgPanel7);
@@ -491,7 +668,7 @@ public class DashboardWindow extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgPanel8Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel13)
-                .addContainerGap(652, Short.MAX_VALUE))
+                .addContainerGap(748, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Account", bgPanel8);
@@ -581,6 +758,88 @@ public class DashboardWindow extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_bgPanel3MouseClicked
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        String selectedProvider = getSelectedProvider();
+        if (selectedProvider == "null") {
+            JOptionPane.showMessageDialog(null, "Please select a payment provider.", "No provider selected", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (jTextField1.getText() == "null") {
+            JOptionPane.showMessageDialog(null, "Please enter a transaction ID.", "No transaction ID is entered", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (jLabel15.getText() == "0") {
+            JOptionPane.showMessageDialog(null, "Please select a subsription.", "No subscription is selected", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        Integer[] subscriptionIDs = new Integer[selectedIndices.size()];
+        for (int i = 0; i < selectedIndices.size(); i++) {
+            subscriptionIDs[i] = ((Integer)jTable2.getValueAt(selectedIndices.get(i), 0));
+        }
+        try {
+            user.pay(Long.parseLong(jTextField1.getText()), selectedProvider, amount, subscriptionIDs);
+            JOptionPane.showMessageDialog(null, "Payment done.");
+            loadPaymentInfo();
+            loadSubscriptions();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private String getSelectedProvider() {
+        if (jRadioButton1.isSelected()) {
+            return "bKash";
+        } else if (jRadioButton2.isSelected()) {
+            return "Rocket";
+        } else if (jRadioButton3.isSelected()) {
+            return "Nagad";
+        } else {
+            return "null";
+        }
+    }
+    
+    private void jTable2ValueChanged(ListSelectionEvent lse) {
+        if (!lse.getValueIsAdjusting()) {
+            ListSelectionModel lsm = jTable2.getSelectionModel();
+            int minIndex = lsm.getMinSelectionIndex();
+            int maxIndex = lsm.getMaxSelectionIndex();
+            selectedIndices.clear();
+            if (!lsm.isSelectionEmpty()) {
+                for (int i = minIndex; i <= maxIndex; i++) {
+                    if (lsm.isSelectedIndex(i)) {
+                        selectedIndices.add(i);
+                    }
+                }
+            }
+            loadPaymentInfo();
+        }
+    }
+    
+    void loadPaymentInfo() {
+        amount = 0;
+        for (int i = 0; i < selectedIndices.size(); i++) {
+            amount += (Integer)jTable2.getValueAt(selectedIndices.get(i), 2);
+        }
+        jLabel15.setText(String.valueOf(amount));
+    }
+    
     public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -627,17 +886,23 @@ public class DashboardWindow extends javax.swing.JFrame {
     private BgPanel bgPanel6;
     private BgPanel bgPanel7;
     private BgPanel bgPanel8;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -645,9 +910,16 @@ public class DashboardWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField1;
     private RectBgPanel rectBgPanel1;
     private SidePanel sidePanel1;
     // End of variables declaration//GEN-END:variables
