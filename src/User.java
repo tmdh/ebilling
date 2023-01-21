@@ -1,9 +1,7 @@
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.StringJoiner;
 import java.util.Vector;
-import java.util.logging.*;
 import javax.swing.JOptionPane;
 
 /*
@@ -22,8 +20,6 @@ public class User {
     int id;
     DatabaseClient client;
     
-    private Logger logger = Logger.getLogger("User");
-    
     public User(DatabaseClient client, int id) {
         this.id = id;
         this.client = client;
@@ -34,7 +30,7 @@ public class User {
             this.name = rs.getString("name");
             this.email = rs.getString("email");
         } catch (Exception e) {
-            logger.log(Level.SEVERE, e.getMessage());
+            e.printStackTrace();
         }
     }
     

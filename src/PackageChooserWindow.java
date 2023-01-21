@@ -1,6 +1,4 @@
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -18,7 +16,6 @@ public class PackageChooserWindow extends javax.swing.JFrame {
     Vector<Package> list;
     User user;
     DatabaseClient client;
-    private Logger logger = Logger.getLogger("PackageChooserWindow");
     
     /**
      * Creates new form PackageChooserWindow
@@ -29,7 +26,7 @@ public class PackageChooserWindow extends javax.swing.JFrame {
         try {
             list = Package.all(client);
         } catch (Exception e) {
-            logger.log(Level.SEVERE, e.getMessage());
+            e.printStackTrace();
         }
         initComponents();
         jLabel1.setText("Welcome " + user.name + ", here is a list of packages for you to choose:");
@@ -149,9 +146,9 @@ public class PackageChooserWindow extends javax.swing.JFrame {
             Subscription.insert(client, user, jList1.getSelectedIndex()+1);
             new DashboardWindow(client, this.user).setVisible(true);
             this.dispose();
-        } catch (Exception ex) {
-            Logger.getLogger(PackageChooserWindow.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error adding subscription", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error adding subscription", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -187,8 +184,8 @@ public class PackageChooserWindow extends javax.swing.JFrame {
             public void run() {
                 try {
                     new PackageChooserWindow(client, User.find(client, "a", "a")).setVisible(true);
-                } catch (Exception ex) {
-                    Logger.getLogger(PackageChooserWindow.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });

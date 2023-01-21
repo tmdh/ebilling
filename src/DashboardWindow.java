@@ -1,8 +1,6 @@
 import java.awt.Color;
 import java.awt.Cursor;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -22,13 +20,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DashboardWindow extends javax.swing.JFrame {
 
-    
     DatabaseClient client;
     User user;
     Vector<Vector<Object>> subscriptions;
     Vector<Integer> selectedIndices = new Vector<>();
     int amount = 0;
-    Logger logger = Logger.getLogger("DashboardWindow");
     
     /**
      * Creates new form DashboardWindow
@@ -48,8 +44,8 @@ public class DashboardWindow extends javax.swing.JFrame {
             jLabel2.setText(String.valueOf(user.countSubscriptions()));
             jLabel4.setText(String.valueOf(user.totalBillPerMonth()));
             loadSubscriptions();
-        } catch (Exception ex) {
-            Logger.getLogger(DashboardWindow.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         buttonGroup2.add(jRadioButton1);
         buttonGroup2.add(jRadioButton2);
@@ -70,8 +66,8 @@ public class DashboardWindow extends javax.swing.JFrame {
     private DefaultTableModel getModel() {
         try {
             subscriptions = user.subscriptions();
-        } catch (Exception ex) {
-            Logger.getLogger(DashboardWindow.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         Vector<String> columnNames = new Vector<>();
         columnNames.add("ID");
@@ -106,7 +102,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                 }
             });
         } catch (Exception e) {
-            System.out.println("Error loading subscriptions: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -975,8 +971,8 @@ public class DashboardWindow extends javax.swing.JFrame {
             public void run() {
                 try {
                     new DashboardWindow(client, User.find(client, "a", "a")).setVisible(true);
-                } catch (Exception ex) {
-                    Logger.getLogger(DashboardWindow.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });

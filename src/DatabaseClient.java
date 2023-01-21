@@ -9,18 +9,15 @@
  */
 
 import java.sql.*;
-import java.util.logging.*;
 
 public class DatabaseClient {
     Connection connection = null;
-    
-    private Logger logger = Logger.getLogger("DatabaseClient");
-    
+        
     public DatabaseClient() {
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:ebilling.db");
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
+            e.printStackTrace();
         }
     }
     
@@ -29,7 +26,7 @@ public class DatabaseClient {
             try {
                 connection.close();
             } catch (SQLException e) {
-                logger.log(Level.SEVERE, e.getMessage());
+                e.printStackTrace();
             }
         }
     }

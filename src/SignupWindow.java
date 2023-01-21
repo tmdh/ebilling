@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-import java.util.logging.*;
-
 /**
  *
  * @author tareque
@@ -12,7 +10,6 @@ import java.util.logging.*;
 public class SignupWindow extends javax.swing.JFrame {
 
     DatabaseClient client;
-    private Logger logger = Logger.getLogger("SignupWindow");
 
     /**
      * Creates new form SignupWindow
@@ -208,7 +205,7 @@ public class SignupWindow extends javax.swing.JFrame {
             this.setVisible(false);
             new PackageChooserWindow(client, user).setVisible(true);
         } catch (Exception e) {
-            logger.log(Level.SEVERE, e.getMessage());
+            e.printStackTrace();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
