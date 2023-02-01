@@ -48,9 +48,9 @@ public class User {
         PreparedStatement st2 = client.connection.prepareStatement("select id from user where email = ?");
         st2.setString(1, email);
         ResultSet rs = st2.executeQuery();
-        int id = rs.getInt("id");
+        int id2 = rs.getInt("id");
         client.close();
-        return new User(id);
+        return new User(id2);
     }
     
     public static User find(String email, String password) throws Exception {
@@ -60,9 +60,9 @@ public class User {
         st.setString(2, password);
         ResultSet rs = st.executeQuery();
         if (rs.next()) {
-            int id = rs.getInt("id");
+            int id2 = rs.getInt("id");
             client.close();
-            return new User(id);
+            return new User(id2);
         } else {
             client.close();
             throw new Exception("Email and password do not match");
@@ -134,5 +134,14 @@ public class User {
         }
         client.close();
         return false;
+    }
+    
+    public void insertSubscription(int pkg_id) throws Exception {
+        DatabaseClient client = new DatabaseClient();
+        PreparedStatement st = client.connection.prepareStatement("insert into subscription (cust_id, pkg_id) values (?, ?)");
+        st.setInt(1, id);
+        st.setInt(2, pkg_id);
+        st.execute();
+        client.close();
     }
 }

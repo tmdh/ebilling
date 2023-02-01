@@ -141,7 +141,7 @@ public class PackageChooserWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            Subscription.insert(user, jList1.getSelectedIndex()+1);
+            user.insertSubscription(jList1.getSelectedIndex()+1);
             new DashboardWindow(this.user).setVisible(true);
             this.dispose();
         } catch (Exception e) {
