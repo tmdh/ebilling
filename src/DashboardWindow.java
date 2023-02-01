@@ -11,11 +11,6 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
  *
  * @author tareque
@@ -327,11 +322,6 @@ public class DashboardWindow extends javax.swing.JFrame {
         jLabel1.setText("Hello");
 
         bgPanel2.setBackground(new java.awt.Color(243, 245, 247));
-        bgPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                bgPanel2MouseMoved(evt);
-            }
-        });
         bgPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bgPanel2MouseClicked(evt);
@@ -580,37 +570,17 @@ public class DashboardWindow extends javax.swing.JFrame {
 
         jRadioButton1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jRadioButton1.setText("bKash");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
 
         jRadioButton2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jRadioButton2.setText("Rocket");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
 
         jRadioButton3.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jRadioButton3.setText("Nagad");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
-            }
-        });
 
         jLabel17.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel17.setText("Transaction ID:");
 
         jTextField1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jButton7.setBackground(new java.awt.Color(60, 55, 253));
         jButton7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -889,11 +859,17 @@ public class DashboardWindow extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel25.setText("Old password:");
 
+        jPasswordField1.setEchoChar('\u25cf');
+
         jLabel26.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel26.setText("New password:");
 
+        jPasswordField2.setEchoChar('\u25cf');
+
         jLabel27.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel27.setText("Confirm new password:");
+
+        jPasswordField3.setEchoChar('\u25cf');
 
         jButton14.setBackground(new java.awt.Color(60, 55, 253));
         jButton14.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -1047,10 +1023,6 @@ public class DashboardWindow extends javax.swing.JFrame {
         bgPanel2.setBackground(new Color(238, 240, 242));
     }//GEN-LAST:event_bgPanel2MouseEntered
 
-    private void bgPanel2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel2MouseMoved
-
-    }//GEN-LAST:event_bgPanel2MouseMoved
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -1062,18 +1034,6 @@ public class DashboardWindow extends javax.swing.JFrame {
     private void bgPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel3MouseClicked
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_bgPanel3MouseClicked
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         String selectedProvider = getSelectedProvider();
@@ -1103,10 +1063,6 @@ public class DashboardWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         new PackageChooserWindow(user).setVisible(true);
