@@ -17,17 +17,23 @@ public class User {
     
     String name;
     String email;
+    String phone;
+    String address;
+    String password;
     int id;
     
     public User(int id) {
         this.id = id;
         DatabaseClient client = new DatabaseClient();
         try {
-            PreparedStatement st = client.connection.prepareStatement("select name, email from user where id=?");
+            PreparedStatement st = client.connection.prepareStatement("select name, email, phone, address, password from user where id=?");
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             this.name = rs.getString("name");
             this.email = rs.getString("email");
+            this.phone = rs.getString("phone");
+            this.address = rs.getString("address");
+            this.password = rs.getString("password");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,6 +72,38 @@ public class User {
         } else {
             client.close();
             throw new Exception("Email and password do not match");
+        }
+    }
+    
+    public void updateInfo(String name, String email, String phone, String address) throws Exception {
+        DatabaseClient client = new DatabaseClient();
+        PreparedStatement st = client.connection.prepareStatement("UPDATE user set name = ?, email = ?, phone = ?, address = ? WHERE id = ?");
+        st.setString(1, name);
+        st.setString(2, email);
+        st.setString(3, phone);
+        st.setString(4, address);
+        st.setInt(5, id);
+        st.execute();
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        client.close();
+    }
+    
+    public void updatePassword(String oldPassword, String newPassword, String confirmNewPassword) throws Exception {
+        if (!oldPassword.equals(this.password)) {
+            throw new Exception("The current password does not match");
+        } else if (!newPassword.equals(confirmNewPassword))  {
+            throw new Exception("The new password does not match with retyped password");
+        } else {
+            DatabaseClient client = new DatabaseClient();
+            PreparedStatement st = client.connection.prepareStatement("UPDATE user set password = ? WHERE id = ?");
+            st.setString(1, newPassword);
+            st.setInt(2, id);
+            st.execute();
+            this.password = newPassword;
+            client.close();
         }
     }
     
