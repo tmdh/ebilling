@@ -28,13 +28,15 @@ public class Package {
         this.bandwidth = bandwidth;
     }
     
-    public static Vector<Package> all(DatabaseClient client) throws SQLException {
+    public static Vector<Package> all() throws SQLException {
+        DatabaseClient client = new DatabaseClient();
         Statement st = client.connection.createStatement();
         ResultSet rs = st.executeQuery("select * from package");
         Vector<Package> v = new Vector<>();
         while (rs.next()) {
             v.add(new Package(rs.getInt("id"), rs.getString("name"), rs.getString("description"), rs.getInt("price"), rs.getInt("bandwidth")));
         }
+        client.close();
         return v;
     }
     

@@ -9,14 +9,11 @@
  */
 public class SignupWindow extends javax.swing.JFrame {
 
-    DatabaseClient client;
-
     /**
      * Creates new form SignupWindow
      */
-    public SignupWindow(DatabaseClient client) {
+    public SignupWindow() {
         initComponents();
-        this.client = client;
     }
 
     /**
@@ -196,14 +193,14 @@ public class SignupWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        new WelcomeWindow(client).setVisible(true);
+        new WelcomeWindow().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            User user = User.create(client, emailTextField.getText(), passwordField.getText(), confirmPasswordField.getText(), nameTextField.getText());
+            User user = User.create(emailTextField.getText(), passwordField.getText(), confirmPasswordField.getText(), nameTextField.getText());
             this.setVisible(false);
-            new PackageChooserWindow(client, user).setVisible(true);
+            new PackageChooserWindow(user).setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }

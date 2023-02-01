@@ -8,14 +8,11 @@
  * @author tareque
  */
 public class WelcomeWindow extends javax.swing.JFrame {
-
-    DatabaseClient client;
     
     /**
      * Creates new form WelcomeWindow
      */
-    public WelcomeWindow(DatabaseClient client) {
-        this.client = client;
+    public WelcomeWindow() {
         initComponents();
     }
 
@@ -234,17 +231,17 @@ public class WelcomeWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        new SignupWindow(client).setVisible(true);
+        new SignupWindow().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.setVisible(false);
-        new LoginWindow(client).setVisible(true);
+        new LoginWindow().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         this.setVisible(false);
-        new SignupWindow(client).setVisible(true);
+        new SignupWindow().setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -253,7 +250,7 @@ public class WelcomeWindow extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         this.setVisible(false);
-        new LoginWindow(client).setVisible(true);
+        new LoginWindow().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -290,13 +287,11 @@ public class WelcomeWindow extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(WelcomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        DatabaseClient client = new DatabaseClient();
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WelcomeWindow(client).setVisible(true);
+                new WelcomeWindow().setVisible(true);
             }
         });
         

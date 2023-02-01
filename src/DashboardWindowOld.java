@@ -12,11 +12,9 @@ public class DashboardWindowOld extends javax.swing.JFrame {
     /**
      * Creates new form DashboardWindow
      */
-    DatabaseClient client;
     User user;
     
-    public DashboardWindowOld(DatabaseClient client, User user) {
-        this.client = client;
+    public DashboardWindowOld(User user) {
         this.user = user;
         initComponents();
     }

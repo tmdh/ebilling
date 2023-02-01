@@ -12,14 +12,11 @@ import javax.swing.JOptionPane;
  */
 public class LoginWindow extends javax.swing.JFrame {
 
-    DatabaseClient client;
-
     /**
      * Creates new form SignupWindow
      */
-    public LoginWindow(DatabaseClient client) {
+    public LoginWindow() {
         initComponents();
-        this.client = client;
     }
 
     /**
@@ -190,10 +187,11 @@ public class LoginWindow extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            User user = User.find(client, emailTextField.getText(), passwordField.getText());
-            new DashboardWindow(client, user).setVisible(true);
+            User user = User.find(emailTextField.getText(), passwordField.getText());
+            new DashboardWindow(user).setVisible(true);
             this.dispose();
         } catch (Exception e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -208,7 +206,7 @@ public class LoginWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        new WelcomeWindow(client).setVisible(true);
+        new WelcomeWindow().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

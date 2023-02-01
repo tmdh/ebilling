@@ -20,7 +20,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DashboardWindow extends javax.swing.JFrame {
 
-    DatabaseClient client;
     User user;
     Vector<Vector<Object>> subscriptions;
     Vector<Integer> selectedIndices = new Vector<>();
@@ -29,8 +28,7 @@ public class DashboardWindow extends javax.swing.JFrame {
     /**
      * Creates new form DashboardWindow
      */
-    public DashboardWindow(DatabaseClient client, User user) {
-        this.client = client;
+    public DashboardWindow(User user) {
         this.user = user;
         initComponents();
         jTabbedPane1.setUI(new BasicTabbedPaneUI() {
@@ -891,7 +889,7 @@ public class DashboardWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        new PackageChooserWindow(client, user).setVisible(true);
+        new PackageChooserWindow(user).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -963,14 +961,12 @@ public class DashboardWindow extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(WelcomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        DatabaseClient client = new DatabaseClient();
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new DashboardWindow(client, User.find(client, "a", "a")).setVisible(true);
+                    new DashboardWindow(User.find("a", "a")).setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

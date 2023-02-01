@@ -15,16 +15,14 @@ public class PackageChooserWindow extends javax.swing.JFrame {
 
     Vector<Package> list;
     User user;
-    DatabaseClient client;
     
     /**
      * Creates new form PackageChooserWindow
      */
-    public PackageChooserWindow(DatabaseClient client, User user) {
-        this.client = client;
+    public PackageChooserWindow(User user) {
         this.user = user;
         try {
-            list = Package.all(client);
+            list = Package.all();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -143,8 +141,8 @@ public class PackageChooserWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            Subscription.insert(client, user, jList1.getSelectedIndex()+1);
-            new DashboardWindow(client, this.user).setVisible(true);
+            Subscription.insert(user, jList1.getSelectedIndex()+1);
+            new DashboardWindow(this.user).setVisible(true);
             this.dispose();
         } catch (Exception e) {
             e.printStackTrace();
@@ -176,14 +174,12 @@ public class PackageChooserWindow extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(WelcomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        DatabaseClient client = new DatabaseClient();
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new PackageChooserWindow(client, User.find(client, "a", "a")).setVisible(true);
+                    new PackageChooserWindow(User.find("a", "a")).setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
