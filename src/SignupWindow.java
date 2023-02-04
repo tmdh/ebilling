@@ -200,7 +200,7 @@ public class SignupWindow extends javax.swing.JFrame {
         try {
             User user = User.create(emailTextField.getText(), passwordField.getText(), confirmPasswordField.getText(), nameTextField.getText());
             this.setVisible(false);
-            new PackageChooserWindow(user).setVisible(true);
+            new PackageChooserWindow(user, true).setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }

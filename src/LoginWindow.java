@@ -188,7 +188,7 @@ public class LoginWindow extends javax.swing.JFrame {
         String password = passwordField.getText();
         if (email.equals("admin") && password.equals("admin")) {
             try {
-                new AdminWindow(User.find("a", "123")).setVisible(true);
+                //new AdminWindow(User.find("a", "123")).setVisible(true);
                 this.dispose();
             } catch (Exception e) {
                 e.printStackTrace();

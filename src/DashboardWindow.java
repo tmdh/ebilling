@@ -129,7 +129,6 @@ public class DashboardWindow extends javax.swing.JFrame {
         sidePanel1 = new SidePanel();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -145,8 +144,6 @@ public class DashboardWindow extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        bgPanel5 = new BgPanel();
-        jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
@@ -200,7 +197,7 @@ public class DashboardWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        sidePanel1.setBackground(new java.awt.Color(0, 102, 255));
+        sidePanel1.setBackground(new java.awt.Color(60, 55, 253));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -215,18 +212,6 @@ public class DashboardWindow extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setBackground(new java.awt.Color(243, 245, 247));
-        jButton2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/icons8-globe-network-16.png"))); // NOI18N
-        jButton2.setText("Subscriptions");
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.setIconTextGap(10);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
             }
         });
 
@@ -285,7 +270,6 @@ public class DashboardWindow extends javax.swing.JFrame {
             .addGroup(sidePanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(sidePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,8 +288,6 @@ public class DashboardWindow extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,7 +303,7 @@ public class DashboardWindow extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel1.setText("Hello");
 
-        bgPanel2.setBackground(new java.awt.Color(0, 102, 255));
+        bgPanel2.setBackground(new java.awt.Color(60, 55, 253));
         bgPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bgPanel2MouseClicked(evt);
@@ -373,7 +355,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        bgPanel3.setBackground(new java.awt.Color(0, 102, 255));
+        bgPanel3.setBackground(new java.awt.Color(60, 55, 253));
         bgPanel3.setPreferredSize(new java.awt.Dimension(270, 100));
         bgPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -426,39 +408,6 @@ public class DashboardWindow extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
-        javax.swing.GroupLayout bgPanel4Layout = new javax.swing.GroupLayout(bgPanel4);
-        bgPanel4.setLayout(bgPanel4Layout);
-        bgPanel4Layout.setHorizontalGroup(
-            bgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgPanel4Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(bgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgPanel4Layout.createSequentialGroup()
-                        .addComponent(bgPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(bgPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
-                .addContainerGap(136, Short.MAX_VALUE))
-        );
-        bgPanel4Layout.setVerticalGroup(
-            bgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgPanel4Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addGroup(bgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bgPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                    .addComponent(bgPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(556, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Dashboard", bgPanel4);
-
-        bgPanel5.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel12.setText("Subscriptions");
-
         jTable1.setBorder(null);
         jTable1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -487,6 +436,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setRowHeight(26);
         jScrollPane1.setViewportView(jTable1);
 
         jButton8.setBackground(new java.awt.Color(60, 55, 253));
@@ -499,31 +449,38 @@ public class DashboardWindow extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout bgPanel5Layout = new javax.swing.GroupLayout(bgPanel5);
-        bgPanel5.setLayout(bgPanel5Layout);
-        bgPanel5Layout.setHorizontalGroup(
-            bgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
-            .addGroup(bgPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+        javax.swing.GroupLayout bgPanel4Layout = new javax.swing.GroupLayout(bgPanel4);
+        bgPanel4.setLayout(bgPanel4Layout);
+        bgPanel4Layout.setHorizontalGroup(
+            bgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgPanel4Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(bgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(bgPanel4Layout.createSequentialGroup()
+                        .addComponent(bgPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(bgPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addGap(21, 21, 21))
         );
-        bgPanel5Layout.setVerticalGroup(
-            bgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgPanel5Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(bgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(485, Short.MAX_VALUE))
+        bgPanel4Layout.setVerticalGroup(
+            bgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgPanel4Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
+                .addGroup(bgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bgPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                    .addComponent(bgPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTabbedPane1.addTab("Subscriptions", bgPanel5);
+        jTabbedPane1.addTab("Dashboard", bgPanel4);
 
         bgPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -600,7 +557,7 @@ public class DashboardWindow extends javax.swing.JFrame {
         bgPanel6.setLayout(bgPanel6Layout);
         bgPanel6Layout.setHorizontalGroup(
             bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
             .addGroup(bgPanel6Layout.createSequentialGroup()
                 .addGroup(bgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgPanel6Layout.createSequentialGroup()
@@ -722,7 +679,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         bgPanel7Layout.setVerticalGroup(
             bgPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -741,7 +698,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                 .addGroup(bgPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(332, Short.MAX_VALUE))
+                .addContainerGap(346, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Complaints", bgPanel7);
@@ -832,7 +789,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                         .addGroup(rectBgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
         rectBgPanel2Layout.setVerticalGroup(
             rectBgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -855,7 +812,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                     .addComponent(jLabel24))
                 .addGap(18, 18, 18)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Account Information", rectBgPanel2);
@@ -902,7 +859,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                         .addComponent(jPasswordField2)
                         .addComponent(jPasswordField3))
                     .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
         rectBgPanel3Layout.setVerticalGroup(
             rectBgPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -921,7 +878,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                     .addComponent(jLabel27))
                 .addGap(51, 51, 51)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(400, Short.MAX_VALUE))
+                .addContainerGap(414, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Security", rectBgPanel3);
@@ -987,57 +944,71 @@ public class DashboardWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jTabbedPane1.setSelectedIndex(1);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        jTabbedPane1.setSelectedIndex(2);
+        jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        jTabbedPane1.setSelectedIndex(3);
+        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        jTabbedPane1.setSelectedIndex(4);
+        jTabbedPane1.setSelectedIndex(3);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void bgPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel3MouseExited
-        setCursor(Cursor.DEFAULT_CURSOR);
-        bgPanel3.setBackground(new Color(0, 102, 255));
-    }//GEN-LAST:event_bgPanel3MouseExited
-
-    private void bgPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel3MouseEntered
-        setCursor(Cursor.HAND_CURSOR);
-        bgPanel3.setBackground(new Color(0, 102, 204));
-    }//GEN-LAST:event_bgPanel3MouseEntered
-
-    private void bgPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel2MouseExited
-        setCursor(Cursor.DEFAULT_CURSOR);
-        bgPanel2.setBackground(new Color(0, 102, 255));
-    }//GEN-LAST:event_bgPanel2MouseExited
-
-    private void bgPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel2MouseEntered
-        setCursor(Cursor.HAND_CURSOR);
-        bgPanel2.setBackground(new Color(0, 102, 204));
-    }//GEN-LAST:event_bgPanel2MouseEntered
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void bgPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel2MouseClicked
-        jTabbedPane1.setSelectedIndex(1);
-    }//GEN-LAST:event_bgPanel2MouseClicked
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        try {
+            user.updatePassword(jPasswordField1.getText(), jPasswordField2.getText(), jPasswordField3.getText());
+            JOptionPane.showMessageDialog(null, "Password changed successfully", "Password update", JOptionPane.INFORMATION_MESSAGE);
+            jPasswordField1.setText("");
+            jPasswordField2.setText("");
+            jPasswordField3.setText("");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton14ActionPerformed
 
-    private void bgPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel3MouseClicked
-        jTabbedPane1.setSelectedIndex(2);
-    }//GEN-LAST:event_bgPanel3MouseClicked
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        try {
+            user.updateInfo(jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextArea2.getText());
+            JOptionPane.showMessageDialog(null, "Changes saved successfully", "Account info update", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        jTabbedPane2.setSelectedIndex(1);
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        jTabbedPane2.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        jTextArea1.setText("");
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        String subSstring = ((String)jComboBox1.getSelectedItem());
+        subSstring = subSstring.split("\\s+")[0];
+        int sub_id = Integer.valueOf(subSstring);
+        String body = jTextArea1.getText();
+        try {
+            user.submitComplain(sub_id, body);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(null, "Complaint sent to administrator. We will reply to your email within 3 hours.");
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         String selectedProvider = getSelectedProvider();
@@ -1069,55 +1040,36 @@ public class DashboardWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        new PackageChooserWindow(user).setVisible(true);
-        this.dispose();
+        new PackageChooserWindow(user, false).setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        String subSstring = ((String)jComboBox1.getSelectedItem());
-        subSstring = subSstring.split("\\s+")[0];
-        int sub_id = Integer.valueOf(subSstring);
-        String body = jTextArea1.getText();
-        try {
-            user.submitComplain(sub_id, body);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        JOptionPane.showMessageDialog(null, "Complaint sent to administrator. We will reply to your email within 3 hours.");
-    }//GEN-LAST:event_jButton9ActionPerformed
+    private void bgPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel3MouseExited
+        setCursor(Cursor.DEFAULT_CURSOR);
+        bgPanel3.setBackground(new Color(60, 55, 253));
+    }//GEN-LAST:event_bgPanel3MouseExited
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        jTextArea1.setText("");
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void bgPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel3MouseEntered
+        setCursor(Cursor.HAND_CURSOR);
+        bgPanel3.setBackground(new Color(0, 102, 204));
+    }//GEN-LAST:event_bgPanel3MouseEntered
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        jTabbedPane2.setSelectedIndex(0);
-    }//GEN-LAST:event_jButton11ActionPerformed
+    private void bgPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel3MouseClicked
+        jTabbedPane1.setSelectedIndex(2);
+    }//GEN-LAST:event_bgPanel3MouseClicked
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        jTabbedPane2.setSelectedIndex(1);
-    }//GEN-LAST:event_jButton12ActionPerformed
+    private void bgPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel2MouseExited
+        setCursor(Cursor.DEFAULT_CURSOR);
+        bgPanel2.setBackground(new Color(60, 55, 253));
+    }//GEN-LAST:event_bgPanel2MouseExited
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        try {
-            user.updateInfo(jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextArea2.getText());
-            JOptionPane.showMessageDialog(null, "Changes saved successfully", "Account info update", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_jButton13ActionPerformed
+    private void bgPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel2MouseEntered
+        setCursor(Cursor.HAND_CURSOR);
+        bgPanel2.setBackground(new Color(0, 102, 204));
+    }//GEN-LAST:event_bgPanel2MouseEntered
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        try {
-            user.updatePassword(jPasswordField1.getText(), jPasswordField2.getText(), jPasswordField3.getText());
-            JOptionPane.showMessageDialog(null, "Password changed successfully", "Password update", JOptionPane.INFORMATION_MESSAGE);
-            jPasswordField1.setText("");
-            jPasswordField2.setText("");
-            jPasswordField3.setText("");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_jButton14ActionPerformed
+    private void bgPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel2MouseClicked
+        jTabbedPane1.setSelectedIndex(1);
+    }//GEN-LAST:event_bgPanel2MouseClicked
 
     private String getSelectedProvider() {
         if (jRadioButton1.isSelected()) {
@@ -1196,7 +1148,6 @@ public class DashboardWindow extends javax.swing.JFrame {
     private BgPanel bgPanel2;
     private BgPanel bgPanel3;
     private BgPanel bgPanel4;
-    private BgPanel bgPanel5;
     private BgPanel bgPanel6;
     private BgPanel bgPanel7;
     private BgPanel bgPanel8;
@@ -1207,7 +1158,6 @@ public class DashboardWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1219,7 +1169,6 @@ public class DashboardWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;

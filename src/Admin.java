@@ -31,7 +31,23 @@ public class Admin {
         return count;
     }
     
-    
-    
-    
+    public static Vector<Vector<Object>> subscriptions() throws Exception {
+        DatabaseClient client = new DatabaseClient();
+        PreparedStatement st = client.connection.prepareStatement("select subscription.cust_id, subscription.id, package.name, package.price, subscription.billing_day, package.bandwidth, subscription.status from subscription inner join package on package.id=subscription.pkg_id");
+        ResultSet rs = st.executeQuery();
+        Vector<Vector<Object>> v = new Vector<Vector<Object>>();
+        while (rs.next()) {
+            Vector<Object> a = new Vector<Object>();
+            for (int columnIndex = 1; columnIndex <= 7; columnIndex++) {
+                if (columnIndex == 7) {
+                    a.add(new Boolean(rs.getBoolean(7)));
+                } else {
+                    a.add(rs.getObject(columnIndex));
+                }
+            }
+            v.add(a);
+        }
+        client.close();
+        return v;
+    }
 }
