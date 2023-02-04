@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author tareque
  */
-public class DashboardWindow extends javax.swing.JFrame {
+public class AdminWindow extends javax.swing.JFrame {
 
     User user;
     Vector<Vector<Object>> subscriptions;
@@ -25,7 +25,7 @@ public class DashboardWindow extends javax.swing.JFrame {
     /**
      * Creates new form DashboardWindow
      */
-    public DashboardWindow(User user) {
+    public AdminWindow(User user) {
         this.user = user;
         initComponents();
         jTabbedPane1.setUI(new BasicTabbedPaneUI() {
@@ -40,10 +40,10 @@ public class DashboardWindow extends javax.swing.JFrame {
                 return 0;
             }
         });
-        jLabel1.setText("Hello, " + user.name + "!");
+        jLabel1.setText("Hello, Admin!");
         try {
-            jLabel2.setText(String.valueOf(user.countSubscriptions()));
-            jLabel4.setText(String.valueOf(user.totalBillPerMonth()));
+            jLabel2.setText(String.valueOf(Admin.countSubscriptions()));
+            jLabel4.setText(String.valueOf(Admin.countComplains()));
             loadSubscriptions();
         } catch (Exception e) {
             e.printStackTrace();
@@ -200,10 +200,10 @@ public class DashboardWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        sidePanel1.setBackground(new java.awt.Color(0, 102, 255));
+        sidePanel1.setBackground(new java.awt.Color(243, 245, 247));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("LEONET");
 
         jButton1.setBackground(new java.awt.Color(243, 245, 247));
@@ -321,7 +321,7 @@ public class DashboardWindow extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel1.setText("Hello");
 
-        bgPanel2.setBackground(new java.awt.Color(0, 102, 255));
+        bgPanel2.setBackground(new java.awt.Color(243, 245, 247));
         bgPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bgPanel2MouseClicked(evt);
@@ -335,17 +335,15 @@ public class DashboardWindow extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("500");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Total number of subscriptions");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Click here to show more info");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
@@ -373,7 +371,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        bgPanel3.setBackground(new java.awt.Color(0, 102, 255));
+        bgPanel3.setBackground(new java.awt.Color(243, 245, 247));
         bgPanel3.setPreferredSize(new java.awt.Dimension(270, 100));
         bgPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -388,17 +386,15 @@ public class DashboardWindow extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("20000");
+        jLabel4.setText("20");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Total bill per month");
+        jLabel5.setText("Total number of complains");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Click here to pay some bills");
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
@@ -449,7 +445,7 @@ public class DashboardWindow extends javax.swing.JFrame {
                 .addGroup(bgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bgPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                     .addComponent(bgPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(556, Short.MAX_VALUE))
+                .addContainerGap(559, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dashboard", bgPanel4);
@@ -863,17 +859,11 @@ public class DashboardWindow extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel25.setText("Old password:");
 
-        jPasswordField1.setEchoChar('\u25cf');
-
         jLabel26.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel26.setText("New password:");
 
-        jPasswordField2.setEchoChar('\u25cf');
-
         jLabel27.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel27.setText("Confirm new password:");
-
-        jPasswordField3.setEchoChar('\u25cf');
 
         jButton14.setBackground(new java.awt.Color(60, 55, 253));
         jButton14.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -1009,22 +999,22 @@ public class DashboardWindow extends javax.swing.JFrame {
 
     private void bgPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel3MouseExited
         setCursor(Cursor.DEFAULT_CURSOR);
-        bgPanel3.setBackground(new Color(0, 102, 255));
+        bgPanel3.setBackground(new Color(243, 245, 247));
     }//GEN-LAST:event_bgPanel3MouseExited
 
     private void bgPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel3MouseEntered
         setCursor(Cursor.HAND_CURSOR);
-        bgPanel3.setBackground(new Color(0, 102, 204));
+        bgPanel3.setBackground(new Color(238, 240, 242));
     }//GEN-LAST:event_bgPanel3MouseEntered
 
     private void bgPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel2MouseExited
         setCursor(Cursor.DEFAULT_CURSOR);
-        bgPanel2.setBackground(new Color(0, 102, 255));
+        bgPanel2.setBackground(new Color(243, 245, 247));
     }//GEN-LAST:event_bgPanel2MouseExited
 
     private void bgPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel2MouseEntered
         setCursor(Cursor.HAND_CURSOR);
-        bgPanel2.setBackground(new Color(0, 102, 204));
+        bgPanel2.setBackground(new Color(238, 240, 242));
     }//GEN-LAST:event_bgPanel2MouseEntered
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1074,15 +1064,6 @@ public class DashboardWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        String subSstring = ((String)jComboBox1.getSelectedItem());
-        subSstring = subSstring.split("\\s+")[0];
-        int sub_id = Integer.valueOf(subSstring);
-        String body = jTextArea1.getText();
-        try {
-            user.submitComplain(sub_id, body);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         JOptionPane.showMessageDialog(null, "Complaint sent to administrator. We will reply to your email within 3 hours.");
     }//GEN-LAST:event_jButton9ActionPerformed
 

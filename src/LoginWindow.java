@@ -184,13 +184,24 @@ public class LoginWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try {
-            User user = User.find(emailTextField.getText(), passwordField.getText());
-            new DashboardWindow(user).setVisible(true);
-            this.dispose();
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, e.getMessage());
+        String email = emailTextField.getText();
+        String password = passwordField.getText();
+        if (email.equals("admin") && password.equals("admin")) {
+            try {
+                new AdminWindow(User.find("a", "123")).setVisible(true);
+                this.dispose();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                User user = User.find(email, password);
+                new DashboardWindow(user).setVisible(true);
+                this.dispose();
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

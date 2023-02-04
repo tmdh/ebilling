@@ -182,4 +182,13 @@ public class User {
         st.execute();
         client.close();
     }
+    
+    public void submitComplain(int sub_id, String body) throws Exception {
+        DatabaseClient client = new DatabaseClient();
+        PreparedStatement st = client.connection.prepareStatement("insert into complains (sub_id, body) values (?, ?)");
+        st.setInt(1, sub_id);
+        st.setString(2, body);
+        st.execute();
+        client.close();
+    }
 }
