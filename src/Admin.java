@@ -31,6 +31,24 @@ public class Admin {
         return count;
     }
     
+    public static int countUsers() throws Exception {
+        DatabaseClient client = new DatabaseClient();
+        PreparedStatement st = client.connection.prepareStatement("select count(id) from user");
+        ResultSet rs = st.executeQuery();
+        int count = rs.getInt(1);
+        client.close();
+        return count;
+    }
+    
+    public static int monthlyTotalIncome() throws Exception {
+        DatabaseClient client = new DatabaseClient();
+        PreparedStatement st = client.connection.prepareStatement("select sum(price) from package, subscription where package.id=subscription.pkg_id");
+        ResultSet rs = st.executeQuery();
+        int count = rs.getInt(1);
+        client.close();
+        return count;
+    }
+    
     public static Vector<Vector<Object>> subscriptions() throws Exception {
         DatabaseClient client = new DatabaseClient();
         PreparedStatement st = client.connection.prepareStatement("select subscription.cust_id, subscription.id, package.name, package.price, subscription.billing_day, package.bandwidth, subscription.status from subscription inner join package on package.id=subscription.pkg_id");
@@ -50,4 +68,25 @@ public class Admin {
         client.close();
         return v;
     }
+    
+    public static Vector<Vector<Object>> users() throws Exception {
+        DatabaseClient client = new DatabaseClient();
+        PreparedStatement st = client.connection.prepareStatement("select id, name, email, phone, address from user");
+        ResultSet rs = st.executeQuery();
+        Vector<Vector<Object>> v = new Vector<Vector<Object>>();
+        while (rs.next()) {
+            Vector<Object> a = new Vector<Object>();
+            for (int columnIndex = 1; columnIndex <= 5; columnIndex++) {/*
+                if (columnIndex == 7) {
+                    a.add(new Boolean(rs.getBoolean(7)));
+                } else {*/
+                    a.add(rs.getObject(columnIndex));
+                //}
+            }
+            v.add(a);
+        }
+        client.close();
+        return v;
+    }
+    
 }
