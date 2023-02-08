@@ -3,6 +3,8 @@ import java.awt.Cursor;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.table.DefaultTableModel;
 
@@ -37,42 +39,31 @@ public class AdminWindow extends javax.swing.JFrame {
             e.printStackTrace();
         }
         loadUsers();
+        ListSelectionModel model = jTable1.getSelectionModel();
+        model.addListSelectionListener((ListSelectionEvent e) -> {
+            if(!model.isSelectionEmpty() && !model.getValueIsAdjusting()) {
+                int i = model.getMinSelectionIndex();
+                int id = (int)jTable1.getValueAt(i, 0);
+                new UserWindow(id).setVisible(true);
+            }
+        });
+        loadComplains();
+        ListSelectionModel model2 = jTable2.getSelectionModel();
+        model2.addListSelectionListener((ListSelectionEvent e) -> {
+            if(!model2.isSelectionEmpty() && !model2.getValueIsAdjusting()) {
+                int i = model2.getMinSelectionIndex();
+                int id = (int)jTable2.getValueAt(i, 0);
+                new ComplainWindow(id, this).setVisible(true);
+            }
+        });
     }
 
-    private DefaultTableModel getModel() {
-        try {
-            subscriptions = Admin.subscriptions();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Vector<String> columnNames = new Vector<>();
-        columnNames.add("User ID");
-        columnNames.add("Subscription ID");
-        columnNames.add("Package Name");
-        columnNames.add("Price");
-        columnNames.add("Billing day");
-        columnNames.add("Bandwidth");
-        columnNames.add("Status");
-        return new DefaultTableModel(subscriptions, columnNames) {
-                Object[] a = {1,1,"name",5,5,5,true};
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    return false;
-                }
-
-                @Override
-                public Class<?> getColumnClass(int c) {
-                    return a[c].getClass();
-                }
-            };
-    }
-    
     Color hoverColor() {
-        return new Color(8, 2, 252);
+        return new Color(114, 0, 198);
     }
     
     Color normalColor() {
-        return new Color(60, 55, 253);
+        return new Color(132, 0, 229);
     }
     
     void loadUsers() {
@@ -83,7 +74,29 @@ public class AdminWindow extends javax.swing.JFrame {
         columnNames.add("Phone");
         columnNames.add("Address");
         try {
-            jTable1.setModel(new DefaultTableModel(Admin.users(), columnNames));
+            jTable1.setModel(new DefaultTableModel(Admin.users(), columnNames) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void loadComplains() {
+        Vector<String> columnNames = new Vector<>();
+        columnNames.add("ID");
+        columnNames.add("Customer Name");
+        columnNames.add("Title");
+        try {
+            jTable2.setModel(new DefaultTableModel(Admin.complains(), columnNames) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -130,10 +143,14 @@ public class AdminWindow extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
         bgPanel7 = new BgPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        sidePanel1.setBackground(new java.awt.Color(60, 55, 253));
+        sidePanel1.setBackground(new java.awt.Color(132, 0, 229));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -224,7 +241,7 @@ public class AdminWindow extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel1.setText("Hello");
 
-        bgPanel2.setBackground(new java.awt.Color(60, 55, 253));
+        bgPanel2.setBackground(new java.awt.Color(132, 0, 229));
         bgPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bgPanel2MouseClicked(evt);
@@ -276,7 +293,7 @@ public class AdminWindow extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        bgPanel3.setBackground(new java.awt.Color(60, 55, 253));
+        bgPanel3.setBackground(new java.awt.Color(132, 0, 229));
         bgPanel3.setPreferredSize(new java.awt.Dimension(270, 100));
         bgPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -329,7 +346,7 @@ public class AdminWindow extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
-        bgPanel5.setBackground(new java.awt.Color(60, 55, 253));
+        bgPanel5.setBackground(new java.awt.Color(132, 0, 229));
         bgPanel5.setPreferredSize(new java.awt.Dimension(270, 100));
         bgPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -382,7 +399,7 @@ public class AdminWindow extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
-        bgPanel8.setBackground(new java.awt.Color(60, 55, 253));
+        bgPanel8.setBackground(new java.awt.Color(132, 0, 229));
         bgPanel8.setPreferredSize(new java.awt.Dimension(270, 100));
         bgPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -500,7 +517,7 @@ public class AdminWindow extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel10.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        jLabel10.setText("Double click the user to show it's information.");
+        jLabel10.setText("Single click the user to show it's information.");
 
         javax.swing.GroupLayout bgPanel6Layout = new javax.swing.GroupLayout(bgPanel6);
         bgPanel6.setLayout(bgPanel6Layout);
@@ -532,15 +549,49 @@ public class AdminWindow extends javax.swing.JFrame {
 
         bgPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel14.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        jLabel14.setText("Complains");
+
+        jLabel15.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        jLabel15.setText("Single click a complain to reply.");
+
+        jTable2.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable2.setRowHeight(24);
+        jScrollPane2.setViewportView(jTable2);
+
         javax.swing.GroupLayout bgPanel7Layout = new javax.swing.GroupLayout(bgPanel7);
         bgPanel7.setLayout(bgPanel7Layout);
         bgPanel7Layout.setHorizontalGroup(
             bgPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 694, Short.MAX_VALUE)
+            .addGroup(bgPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(bgPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         bgPanel7Layout.setVerticalGroup(
             bgPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 714, Short.MAX_VALUE)
+            .addGroup(bgPanel7Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel15)
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Complaints", bgPanel7);
@@ -619,7 +670,7 @@ public class AdminWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_bgPanel2MouseClicked
 
     private void bgPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel5MouseClicked
-        // TODO add your handling code here:
+        jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_bgPanel5MouseClicked
 
     private void bgPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgPanel5MouseEntered
@@ -699,6 +750,8 @@ public class AdminWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -711,8 +764,10 @@ public class AdminWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private RectBgPanel rectBgPanel1;
     private SidePanel sidePanel1;
     // End of variables declaration//GEN-END:variables

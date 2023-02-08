@@ -1,12 +1,6 @@
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
-import javax.swing.JOptionPane;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
 /**
  *
@@ -49,26 +43,6 @@ public class Admin {
         return count;
     }
     
-    public static Vector<Vector<Object>> subscriptions() throws Exception {
-        DatabaseClient client = new DatabaseClient();
-        PreparedStatement st = client.connection.prepareStatement("select subscription.cust_id, subscription.id, package.name, package.price, subscription.billing_day, package.bandwidth, subscription.status from subscription inner join package on package.id=subscription.pkg_id");
-        ResultSet rs = st.executeQuery();
-        Vector<Vector<Object>> v = new Vector<Vector<Object>>();
-        while (rs.next()) {
-            Vector<Object> a = new Vector<Object>();
-            for (int columnIndex = 1; columnIndex <= 7; columnIndex++) {
-                if (columnIndex == 7) {
-                    a.add(new Boolean(rs.getBoolean(7)));
-                } else {
-                    a.add(rs.getObject(columnIndex));
-                }
-            }
-            v.add(a);
-        }
-        client.close();
-        return v;
-    }
-    
     public static Vector<Vector<Object>> users() throws Exception {
         DatabaseClient client = new DatabaseClient();
         PreparedStatement st = client.connection.prepareStatement("select id, name, email, phone, address from user");
@@ -76,17 +50,53 @@ public class Admin {
         Vector<Vector<Object>> v = new Vector<Vector<Object>>();
         while (rs.next()) {
             Vector<Object> a = new Vector<Object>();
-            for (int columnIndex = 1; columnIndex <= 5; columnIndex++) {/*
-                if (columnIndex == 7) {
-                    a.add(new Boolean(rs.getBoolean(7)));
-                } else {*/
-                    a.add(rs.getObject(columnIndex));
-                //}
+            for (int columnIndex = 1; columnIndex <= 5; columnIndex++) {
+                a.add(rs.getObject(columnIndex));
             }
             v.add(a);
         }
         client.close();
         return v;
+    }
+    
+    public static Vector<Vector<Object>> complains() throws Exception {
+        DatabaseClient client = new DatabaseClient();
+        PreparedStatement st = client.connection.prepareStatement("select complains.id, user.name, title from complains, subscription, user where complains.id=subscription.id and subscription.cust_id=user.id");
+        ResultSet rs = st.executeQuery();
+        Vector<Vector<Object>> v = new Vector<Vector<Object>>();
+        while (rs.next()) {
+            Vector<Object> a = new Vector<Object>();
+            for (int columnIndex = 1; columnIndex <= 3; columnIndex++) {
+                a.add(rs.getObject(columnIndex));
+            }
+            v.add(a);
+        }
+        client.close();
+        return v;
+    }
+    
+    public static Vector<Object> complain(int id) throws Exception {
+        DatabaseClient client = new DatabaseClient();
+        PreparedStatement st = client.connection.prepareStatement("select user.name, package.name, title, body from complains, subscription, user, package\n" +
+        "where complains.id=subscription.id and subscription.cust_id=user.id and subscription.pkg_id=package.id and complains.id=?");
+        st.setInt(1, id);
+        ResultSet rs = st.executeQuery();
+        rs.next();
+        Vector<Object> v = new Vector<>();
+        v.add(rs.getString(1));
+        v.add(rs.getString(2));
+        v.add(rs.getString(3));
+        v.add(rs.getString(4));
+        client.close();
+        return v;
+    }
+    
+    public static void reply(int id) throws Exception {
+        DatabaseClient client = new DatabaseClient();
+        PreparedStatement st = client.connection.prepareStatement("DELETE FROM complains WHERE id=?");
+        st.setInt(1, id);
+        st.execute();
+        client.close();
     }
     
 }

@@ -160,7 +160,9 @@ public class PackageChooserWindow extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             user.insertSubscription(jList1.getSelectedIndex()+1);
-            new DashboardWindow(this.user).setVisible(true);
+            if (openDashboard) {
+                new DashboardWindow(this.user).setVisible(true);
+            }
             this.dispose();
         } catch (Exception e) {
             e.printStackTrace();
@@ -204,7 +206,7 @@ public class PackageChooserWindow extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new PackageChooserWindow(User.find("a", "a"), true).setVisible(true);
+                    new PackageChooserWindow(User.find("a", "123"), true).setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

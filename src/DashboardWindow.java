@@ -196,6 +196,7 @@ public class DashboardWindow extends javax.swing.JFrame {
         jButton14 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Dashboard");
 
         sidePanel1.setBackground(new java.awt.Color(60, 55, 253));
 
@@ -476,8 +477,9 @@ public class DashboardWindow extends javax.swing.JFrame {
                     .addComponent(bgPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dashboard", bgPanel4);
@@ -1136,7 +1138,7 @@ public class DashboardWindow extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new DashboardWindow(User.find("a", "123")).setVisible(true);
+                    new DashboardWindow(User.find("tarequemd.hanif@yahoo.com", "password")).setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
