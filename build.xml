@@ -71,11 +71,9 @@
 
     -->
     <target name="create-jar" depends="clean,jar">
-        <mkdir dir="build/lib"/>
-        <copy file="sqlite-jdbc-3.40.0.0.jar" todir="build/lib"/>
-        <jar destfile="build/ebilling-jar-with-dependencies.jar">
-            <fileset dir="build/classes"/>
-            <fileset dir="build/lib"/>
+        <jar id="files" jarfile="ebilling-packed.jar">
+            <zipfileset src="dist/ebilling.jar"/>
+            <zipfileset src="dist/lib/sqlite-jdbc-3.40.0.0.jar"/>
             <manifest>
                 <attribute name="Main-Class" value="${main.class}"/>
             </manifest>
